@@ -1,0 +1,254 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    /*animation: App-logo-spin infinite 20s linear;*/
+    height: 80px;
+}
+
+.App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+}
+
+.App-title {
+    font-size: 1.5em;
+}
+
+.App-intro {
+    font-size: large;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/*****************************************/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #eeeeee;
+}
+
+.container {
+    display: flex;
+}
+
+.row {
+    flex: 1;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+input[type=submit] {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    color: #333333;
+    background-color: buttonface;
+    border-radius: 2px;
+    border: 0;
+    min-height: 52px;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #eeeeee;
+    background-image: none;
+    border: 0 solid #d9d9d9;
+    border-radius: 4px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3);
+    transition: border-color ease-in-out .15s;
+}
+
+input.hidden {
+    display: none;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #eeeeee inset, 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3) !important;
+}
+
+input:focus, textarea:focus {
+    box-shadow: inset 1px 1px 13px 0 rgba(0, 0, 0, .1), inset -1px -1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .1), 0 4px 8px rgba(0, 0, 0, .3);
+    outline-color: transparent;
+}
+
+.btn a, .btn span {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    padding: 1rem;
+    color: #333333;
+    line-height: normal;
+    border: 1px solid #d9d9d9;
+    background-color: buttonface;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3);
+    border-radius: 2px;
+}
+
+.btn a:focus, .btn a:hover, input[type=submit]:focus, input[type=submit]:hover {
+    box-shadow: inset 1px 1px 13px 0 rgba(0, 0, 0, .1), inset -1px -1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .1), 0 4px 8px rgba(0, 0, 0, .3);
+}
+
+.Launcher {
+    max-width: 300px;
+    margin: 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease 500ms;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #eeeeee;
+    background-image: none;
+    border: 0 solid #d9d9d9;
+    border-radius: 4px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3);
+    transition: border-color ease-in-out .15s;
+    margin-top: 2rem;
+}
+
+.Launcher.opened {
+    opacity: 1;
+    visibility: visible;
+}
+
+.messagesList:empty {
+    display: none;
+}
+
+.messagesList {
+    /*box-shadow: 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3);*/
+    transition: border-color ease-in-out .15s;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.messagesListContent {
+    position: absolute;
+    bottom: 0;
+    left: .2rem;
+    right: .2rem;
+    overflow-y: auto;
+}
+
+.scrollableContent {
+    height: 400px;
+    overflow-y: auto;
+    padding: 1rem 1rem 1rem 0;
+    padding-top: 320px;
+    /*background: rgba(0,0,0,.1);*/
+
+}
+
+.scrollable{
+  /*min-height: 400px;*/
+}
+
+.bubble {
+    position: relative;
+    display: flex;
+    margin: 1rem 0;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    /*background: #cf000f;*/
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    margin: .5rem;
+}
+
+.avatar span {
+    flex: 1;
+}
+
+.message {
+    flex: 1;
+}
+
+.message .date {
+    font-size: .7rem;
+    margin-top: 1rem;
+}
+.message .innerText{
+  flex:1;
+}
+
+.bubble:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.bubble:nth-child(odd) .message {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    padding: .5rem .5rem;
+    background: darkgrey;
+}
+
+.bubble:nth-child(even) .message {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    padding: .5rem .5rem;
+    background: rgba(0, 0, 0, .2);
+}
+
+.open_Launcher span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    margin: .5rem;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    cursor: pointer;
+}

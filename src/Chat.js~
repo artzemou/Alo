@@ -1,0 +1,68 @@
+import React, { Component } from 'react';
+import io from "socket.io-client";
+
+export default class Chat extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            username: '',
+            message: '',
+            messages: []
+        };
+
+        this.socket = io('http://localhost:8000');
+
+        this.socket.on('RECEIVE_MESSAGE', function(data){
+            addMessage(data);
+        });
+
+        const addMessage = data => {
+            console.log(data);
+            this.setState({messages: [...this.state.messages, data]});
+            console.log(this.state.messages);
+        };
+
+        this.sendMessage = ev => {
+            ev.preventDefault();
+            this.socket.emit('SEND_MESSAGE', {
+                author: this.state.username,
+                message: this.state.message
+            })
+            this.setState({message: ''});
+
+        }
+    }
+    render(){
+        return (
+            <div className="container">
+                <div className="row">
+                    <div>
+                        <div className="Launcher">
+                            <div>
+                                <div className="messageList">
+                                    {this.state.messages.map((message, index) => {
+                                        return (
+                                            <div className="bubble" key={index}>
+                                                <div className="avatar"><span>{message.author.charAt(0)}</span></div>
+                                                <div className="message"> {message.message}</div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
+                            </div>
+                            <form>
+                                <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} />
+                                <br/>
+                                <textarea placeholder="Message"  value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}></textarea>
+                                <br/>
+                                <input type="submit" onClick={this.sendMessage} />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
